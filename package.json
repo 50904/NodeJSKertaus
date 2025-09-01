@@ -1,0 +1,26 @@
+{
+  "name": "nodejskertaus",
+  "version": "1.0.0",
+  "description": "Kerrataan Node-js:n käyttöönottoa",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/50904/NodeJSKertaus.git"
+  },
+  "keywords": [
+    "Node"
+  ],
+  "author": "Joonatan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/50904/NodeJSKertaus/issues"
+  },
+  "homepage": "https://github.com/50904/NodeJSKertaus#readme",
+  "dependencies": {
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3"
+  }
+}
