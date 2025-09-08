@@ -17,6 +17,9 @@ const app = express();
 // Määritellään sovellukselle TCP-portit
 const PORT = process.env.PORT || 8080;
 
+// Lomakkeen datan käsittely (body-parser)
+app.use(express.urlencoded({ extended: true }));
+
 // Määritellään sovelluksen käyttämät hakemistot
 app.use(express.static('public'));
 
@@ -32,7 +35,7 @@ app.set('views', './views');
 app.get('/', (req, res) => { 
     let indexData = {
         'weekday': 'maanantai',
-        'meal': 'riisiä ja kana tandori-kastikkeessa'
+        'meal': 'riisiä ja kanaa tandori-kastikkeessa'
     };
     res.render('index', indexData);
 });
@@ -44,6 +47,25 @@ app.get('/about', (req, res) => {
     };
     res.render('about', aboutData);
 });
+
+
+app.get('/form', (req, res) => {
+    let formData = {
+        'name': '',
+        'surname': ''
+    };
+    res.render('form', formData);
+});
+
+// POST-reitti lomakkeelle
+app.post('/form', (req, res) => {
+    const { firstname, surname } = req.body;
+    // Datalla saat tiedot talteen esim. Etunimen ja Sukunimen
+    res.send(`Lomake vastaanotettu! Etunimi: ${firstname}, Sukunimi: ${surname} ryhmä: ${req.body.group}`);
+});
+
+// PALVELIMEN KÄYNNISTYS
+// ---------------------
 
 app.listen(PORT);
 console.log(`Palvelin käynnistetty portissa ${PORT}`);
